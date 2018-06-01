@@ -6,7 +6,7 @@
 /*   By: rmdaba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 13:48:59 by rmdaba            #+#    #+#             */
-/*   Updated: 2018/05/22 13:49:01 by rmdaba           ###   ########.fr       */
+/*   Updated: 2018/05/29 11:39:05 by rmdaba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <fcntl.h>
 
 size_t				ft_strlen(const char *s);
 int					ft_atoi(const char *str);
@@ -85,10 +84,6 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
-void				ft_putwchar(wchar_t wc);
-size_t				ft_wstrlen(const wchar_t *str);
-int					ft_wstrsize(wchar_t *wstr);
-
 char				*ft_itoa_base(int val, int base);
 int					ft_isblank(int c);
 int					ft_iscntrl(int c);
@@ -102,4 +97,5 @@ int					ft_str_is_lowercase(char *str);
 int					ft_str_is_numeric(char *str);
 int					ft_str_is_printable(char *str);
 int					ft_str_is_uppercase(char *str);
+void				*ft_memdup(const void *src, size_t len);
 #endif
