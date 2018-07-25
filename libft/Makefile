@@ -6,16 +6,16 @@
 #    By: rmdaba <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/21 22:58:58 by rmdaba            #+#    #+#              #
-#    Updated: 2018/05/29 11:46:56 by rmdaba           ###   ########.fr        #
+#*   Updated: 2018/07/16 12:52:08 by Roger            ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = libft.a
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS =-Wall -Wextra -Werror
 
-HEADER = libft.h
+HEADER = ./../incl/libft.h
 
 SRCS = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c\
 		ft_isblank.c ft_iscntrl.c ft_isdigit.c ft_isgraph.c ft_islower.c\
@@ -31,37 +31,32 @@ SRCS = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c\
 		ft_strjoin.c ft_strlcat.c ft_strlen.c ft_strmap.c ft_strmapi.c\
 		ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c\
 		ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c\
-		ft_strtrim.c ft_tolower.c ft_toupper.c  ft_strcat.c
+		ft_strtrim.c ft_tolower.c ft_toupper.c  ft_strcat.c\
+		buffer.c ft_check_fmt.c ft_find_flag.c ft_print_error.c\
+		ft_printf.c ft_printf_base.c ft_printf_base_tools.c\
+		ft_printf_nbr.c ft_printf_nbr_tools.c ft_printf_putchar.c\
+		ft_printf_string.c ft_printf_stringuni.c ft_printf_stringuni2.c\
+		ft_putchar_uni.c ft_putchar_uni2.c ft_type.c ft_getchar.c ft_strspn.c\
+		ft_strcspn.c ft_strtok.c get_next_line.c ft_strcjoin.c
 
-OBJ =  ft_atoi.o ft_bzero.o ft_isalnum.o ft_isalpha.o ft_isascii.o\
-		ft_isblank.o ft_iscntrl.o ft_isdigit.o ft_isgraph.o ft_islower.o\
-		ft_isprint.o ft_isspace.o ft_isupper.o ft_isxdigit.o ft_itoa.o\
-		ft_itoa_base.o ft_lstadd.o ft_lstdel.o ft_lstdelone.o ft_lstiter.o\
-		ft_lstmap.o ft_lstnew.o ft_memalloc.o ft_memccpy.o ft_memchr.o\
-		ft_memcmp.o ft_memcpy.o ft_memdel.o ft_memdup.o ft_memmove.o\
-		ft_memset.o ft_putchar.o ft_putchar_fd.o ft_putendl.o ft_putendl_fd.o\
-		ft_putnbr.o ft_putnbr_fd.o ft_putstr.o ft_putstr_fd.o ft_str_is_alpha.o\
-		ft_str_is_lowercase.o ft_str_is_numeric.o ft_str_is_printable.o ft_str_is_uppercase.o\
-		ft_strchr.o ft_strclr.o ft_strcmp.o ft_strcpy.o\
-		ft_strdel.o ft_strdup.o ft_strequ.o ft_striter.o ft_striteri.o\
-		ft_strjoin.o ft_strlcat.o ft_strlen.o ft_strmap.o ft_strmapi.o\
-		ft_strncat.o ft_strncmp.o ft_strncpy.o ft_strnequ.o ft_strnew.o\
-		ft_strnstr.o ft_strrchr.o ft_strsplit.o ft_strstr.o ft_strsub.o\
-		ft_strtrim.o ft_tolower.o ft_toupper.o ft_strcat.o
+OBJ = 	$(SRC:%.c=%.o)
 
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	gcc $(FLAGS) -c $(SRCS) -I $(HEADER)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+$(NAME):
+	@gcc $(FLAGS) -c $(addprefix srcs/, $(SRCS))
+	@ar rc $(NAME) *.o
+	@ranlib $(NAME)
+	@printf "\e[32m[ ✔ ]libft library made\n"
 
 clean:
-	rm -rf *.o
+	@rm -rf *.o
+	@printf "\e[31m[ ✔ ] Libft object files removed\n\e[0m"
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
+	@printf "\e[33m[ ✔ ] Libft library removed\n\e[0m"
 
 re: fclean all
 
